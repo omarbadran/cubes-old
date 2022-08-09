@@ -1,0 +1,16 @@
+{
+    "singleQuote": true,
+    "trailingComma": "none",
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": true,
+    "editorconfig": true,
+    "overrides": [
+        {
+            "files": ["*.ts", "*.mts"],
+            "options": {
+                "parser": "typescript"
+            }
+        }
+    ]
+}
