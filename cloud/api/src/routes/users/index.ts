@@ -1,10 +1,5 @@
-import type { Handler } from 'express';
-import { createError } from '../../errors';
+import { Handler } from '@tinyhttp/app';
 
-export const get: Handler = async (req, res, next) => {
-	try {
-		throw createError('unauthorized');
-	} catch (err) {
-		next(err);
-	}
+export const get: Handler = (req, res) => {
+	res.send({ a: 1 });
 };

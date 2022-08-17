@@ -1,4 +1,4 @@
-export const errors = [
+export default [
 	{
 		code: 'invalid_json',
 		status: 400,

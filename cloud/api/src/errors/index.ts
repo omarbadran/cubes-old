@@ -1,26 +1,18 @@
-import { errors } from './errors';
+import { ErrorHandler } from '@tinyhttp/app';
+
+import errors from './list.js';
 
 export type ErrorCode = typeof errors[number]['code'];
 
-export class APIError {
-	code: string;
-	status: number;
-	message: string;
-	data: any;
-
-	constructor(message: string, status: number, code: ErrorCode, data: any = {}) {
-		this.message = message;
-		this.status = status;
-		this.code = code;
-		this.data = data;
-	}
-}
+export const onError: ErrorHandler = (err, req, res) => {
+	res.status(err?.status || 500).send(err);
+};
 
 export const createError = (code: ErrorCode, data?: any) => {
 	let item = errors.find((i) => i.code === code);
 
 	if (item) {
-		return new APIError(item.message, item.status, item.code, data);
+		return { ...item, data };
 	}
 
 	return null;

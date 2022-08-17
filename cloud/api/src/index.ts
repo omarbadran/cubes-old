@@ -1,29 +1,19 @@
-import express, { Handler } from 'express';
-import dotenv from 'dotenv';
-import morgan from 'morgan';
-import cors from 'cors';
-import createRouter from 'express-file-routing';
-import { json, urlencoded } from 'body-parser';
-import { handleError } from './errors/handler';
-import asyncHandler from 'async-express-mw';
+import { App } from '@tinyhttp/app';
+import { cors } from '@tinyhttp/cors';
+import { onError } from './errors/index.js';
 
-dotenv.config();
+import { createRouter } from './router.js';
 
-const app = express();
-const port = process.env.PORT || 3001;
+const app = new App({
+	onError
+});
 
-// Router
+const port = process.env?.PORT || '8080';
+
+app.use(cors());
+
 createRouter(app);
 
-// Middlewares
-app.use(morgan('dev'))
-	.use(urlencoded({ extended: true }))
-	.use(json())
-	.use(cors())
-	.use(asyncHandler)
-	.use(handleError);
-
-// Listen
-app.listen(port, () => {
-	console.log(`api running on ${port}`);
+app.listen(parseInt(port), () => {
+	console.log(`Server listening at port: ${port}`);
 });
