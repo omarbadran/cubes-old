@@ -2,8 +2,10 @@
 	"$schema": "https://json.schemastore.org/tsconfig",
 	"display": "Default",
 	"compilerOptions": {
-		"target": "es2021",
-		"lib": ["es2021"],
+		"module": "ESNext",
+		"target": "ESNext",
+		"lib": ["ESNext"],
+		"moduleResolution": "Node",
 		"composite": false,
 		"declaration": true,
 		"declarationMap": true,
@@ -11,14 +13,17 @@
 		"jsx": "preserve",
 		"jsxImportSource": "solid-js",
 		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
 		"forceConsistentCasingInFileNames": true,
 		"inlineSources": false,
 		"isolatedModules": true,
-		"moduleResolution": "node",
 		"noUnusedLocals": false,
 		"noUnusedParameters": false,
 		"preserveWatchOutput": true,
 		"skipLibCheck": true,
 		"strict": true
-	}
+	},
+	"lib": ["ESNext"],
+	"include": ["packages/*/src", "types"],
+	"exclude": ["packages/*/src/tests"]
 }

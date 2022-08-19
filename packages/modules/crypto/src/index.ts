@@ -1,3 +1,4 @@
+//@ts-ignore
 import crypto from 'hypercore-crypto';
 
 export interface KeyPair {

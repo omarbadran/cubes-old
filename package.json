@@ -9,12 +9,12 @@
 		"clean": "turbo run clean --no-cache --parallel --continue",
 		"test": "turbo run test",
 		"dev": "turbo run dev",
-		"format": "prettier --write '{packages,apps,!build}/**/*.{ts,tsx,js,json,md,yml}'"
+		"format": "prettier --write '{packages,!build}/**/*.{ts,tsx,js,json,md,yml}'"
 	},
 	"workspaces": [
-		"packages/*",
-		"cloud/*",
-		"apps/*"
+		"packages/apps/*",
+		"packages/cloud/*",
+		"packages/modules/*"
 	],
 	"devDependencies": {
 		"turbo": "^1.4.2"
